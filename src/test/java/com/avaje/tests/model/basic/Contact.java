@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
+import javax.persistence.FetchType;
 
 import com.avaje.ebean.annotation.CacheStrategy;
 import com.avaje.ebean.annotation.CreatedTimestamp;
@@ -43,6 +44,7 @@ public class Contact {
     @Version
     Timestamp updtime;
 
+    Boolean customerIsContact;
 
     public Contact(String firstName, String lastName) {
         this.firstName = firstName;

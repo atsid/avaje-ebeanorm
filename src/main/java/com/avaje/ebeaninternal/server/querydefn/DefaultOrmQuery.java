@@ -337,7 +337,7 @@ public class DefaultOrmQuery<T> implements SpiQuery<T> {
                     Iterator<Property> it = properties.iterator();
                     while (it.hasNext()) {
                         OrderBy.Property property = it.next();
-                        if (property.getProperty().startsWith(joinPath.getPath())){
+                        if (property.getProperty().startsWith(joinPath.getPath() + ".")){
                             // remove this orderBy segment and 
                             // add it to the secondary join
                             it.remove();
