@@ -408,7 +408,7 @@ public class CQueryBuilder implements Constants {
    */
   private String convertDbOrderByForSelect(String dbOrderBy) {
     // just remove the ASC and DESC keywords
-    return dbOrderBy.replaceAll("(?i)\\b asc\\b|\\b desc\\b", "");
+    return dbOrderBy.replaceAll("\\s+(asc|desc)\\s*", "");
   }
 
   private boolean isEmpty(String s) {

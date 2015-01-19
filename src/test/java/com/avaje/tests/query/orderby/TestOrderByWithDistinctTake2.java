@@ -61,5 +61,24 @@ public class TestOrderByWithDistinctTake2 extends BaseTestCase {
     Assert.assertTrue(generatedSql.contains("from o_customer t0 join contact u1 on u1.customer_id = t0.id"));
     Assert.assertTrue(generatedSql.contains("where lower(u1.first_name) like ?"));
   }
+
+  @Test
+  public void testWithDescWithLower() {
+
+    Query<Customer> query = Ebean.find(Customer.class)
+      .select("id")
+      .where().ilike("contacts.firstName", "R%")
+      .order("LOWER(name) desc");
+
+    query.findList();
+
+    String generatedSql = query.getGeneratedSql();
+
+    Assert.assertTrue("t0.name added to the select clause", generatedSql.contains("select distinct t0.id c0, LOWER(t0.name)"));
+    Assert.assertFalse("t0.name order clause not added", generatedSql.contains("select distinct t0.id c0, LOWER(t0.name) desc"));
+    Assert.assertTrue(generatedSql.contains("order by LOWER(t0.name) desc"));
+    Assert.assertTrue(generatedSql.contains("from o_customer t0 join contact u1 on u1.customer_id = t0.id"));
+    Assert.assertTrue(generatedSql.contains("where lower(u1.first_name) like ?"));
+  }
   
 }
