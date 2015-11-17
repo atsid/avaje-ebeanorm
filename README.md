@@ -1,3 +1,4 @@
+[![Dependency Status](https://david-dm.org/atsid/avaje-ebeanorm.svg)](https://david-dm.org/atsid/avaje-ebeanorm)
 [![Stories in Ready](https://badge.waffle.io/ebean-orm/avaje-ebeanorm.png?label=ready&title=Ready)](https://waffle.io/ebean-orm/avaje-ebeanorm)
 avaje-ebeanorm
 ==============
